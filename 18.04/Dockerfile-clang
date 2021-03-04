@@ -2,9 +2,13 @@ FROM ubuntu:18.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-# install compiler
 RUN apt-get update
-RUN apt-get -y install git wget curl unzip build-essential cmake clang
+
+# install tools
+RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
+
+# install compiler and compilation-tools
+RUN apt-get -y install build-essential cmake clang
 
 # set clang as default compiler
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
