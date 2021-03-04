@@ -22,7 +22,7 @@ RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilte
 
 # install MariaDB libraries
 RUN apt-get -y install software-properties-common gnupg-curl
-RUN RUN curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
+RUN curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | bash
 RUN apt-get update
 RUN apt-get -y install libmariadbclient-dev
 RUn apt-get -y install libc++-dev libc++abi-dev
