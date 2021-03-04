@@ -13,8 +13,12 @@ RUn apt-get -y install libssl-dev
 RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libpostproc-dev libavutil-dev libswresample-dev
 
 # install MariaDB libraries
-RUN apt-get -y install software-properties-common gnupg-curl
-RUN apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
-RUN add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] https://mirror.rackspace.com/mariadb/repo/10.5/ubuntu focal main'
+RUN apt-get -y install software-properties-common
+RUN wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
+RUN echo "6528c910e9b5a6ecd3b54b50f419504ee382e4bdc87fa333a0b0fcd46ca77338 mariadb_repo_setup" \
+    | sha256sum -c -
+RUN chmod +x mariadb_repo_setup
+RUN ./mariadb_repo_setup \
+   --mariadb-server-version="mariadb-10.5"
 RUN apt-get update
 RUN apt-get -y install libmariadbclient-dev libmariadb-client-lgpl-dev-compat
