@@ -19,7 +19,7 @@ RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilte
 # install MariaDB libraries
 RUN apt-get -y install software-properties-common gnupg-curl
 RUN apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
-RUN add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] https://mirror.serverion.com/mariadbrepo/10.5/ubuntu xenial main'
+RUN add-apt-repository 'deb [arch=amd64,arm64,i386,ppc64el] https://mirror.rackspace.com/mariadb/repo/10.5/ubuntu xenial main'
 RUN apt-get update
 RUN apt-get -y install libmariadbclient-dev
 RUn apt-get -y install libc++-dev libc++abi-dev
