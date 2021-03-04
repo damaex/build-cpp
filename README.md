@@ -17,5 +17,5 @@
 | git                  | 2.25.1 | 2.17.1 | 2.7.4  |
 | cmake                | 3.16.3 | 3.10.2 | 3.5.1  |
 | libssl-dev           | 1.1.1f | 1.1.1  | 1.0.2g |
-| libmariadbclient-dev | 10.5   | 10.5   | 10.5   |
+| libmariadbclient-dev | 10.3   | 10.1   | 10.3   |
 | FFMpeg dev libraries | 4.2.4  | 3.4.8  | 2.8.17 |
