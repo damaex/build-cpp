@@ -5,16 +5,25 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 
 # install tools
-RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
+RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates software-properties-common gnupg-curl
 
-# install compiler and compilation-tools
-RUN apt-get -y install build-essential cmake 
+# install compiler
+RUN add-apt-repository ppa:savoury1/gcc-defaults-9
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get -y dist-upgrade
+
+# install compilation-tools
+RUN apt-get -y install build-essential cmake
 
 # install OpenSSL libraries
-RUn apt-get -y install libssl-dev
+RUN apt-get -y install libssl-dev
 
 # install FFMpeg
 RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libpostproc-dev libavutil-dev libswresample-dev
 
 # install MariaDB libraries
 RUN apt-get -y install libmariadbclient-dev
+
+RUN echo $(cc --version)
+RUN echo $(c++ --version)

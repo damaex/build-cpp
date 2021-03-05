@@ -5,21 +5,31 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 
 # install tools
-RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
+RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates software-properties-common gnupg-curl
 
-# install compiler and compilation-tools
-RUN apt-get -y install build-essential cmake clang
+# install compiler
+RUN add-apt-repository universe
+RUN wget https://apt.llvm.org/llvm.sh
+RUN chmod +x llvm.sh
+RUN ./llvm.sh 10
+RUN apt-get update
+
+# install compilation-tools
+RUN apt-get -y install build-essential cmake
 
 # set clang as default compiler
-RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
-RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang 100
+RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-10 100
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang-10 100
 
 # install OpenSSL libraries
-RUn apt-get -y install libssl-dev
+RUN apt-get -y install libssl-dev
 
 # install FFMpeg
 RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libpostproc-dev libavutil-dev libswresample-dev
 
 # install MariaDB libraries
 RUN apt-get -y install libmariadbclient-dev
-RUn apt-get -y install libc++-dev libc++abi-dev
+RUN apt-get -y install libc++-dev libc++abi-dev
+
+RUN echo $(cc --version)
+RUN echo $(c++ --version)

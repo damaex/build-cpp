@@ -11,10 +11,13 @@ RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
 RUN apt-get -y install build-essential cmake 
 
 # install OpenSSL libraries
-RUn apt-get -y install libssl-dev
+RUN apt-get -y install libssl-dev
 
 # install FFMpeg
 RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev libswscale-dev libpostproc-dev libavutil-dev libswresample-dev
 
 # install MariaDB libraries
 RUN apt-get -y install libmariadbclient-dev libmariadb-client-lgpl-dev-compat
+
+RUN echo $(cc --version)
+RUN echo $(c++ --version)
