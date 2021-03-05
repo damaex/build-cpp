@@ -14,7 +14,13 @@ RUN apt-get upgrade
 RUN apt-get -y dist-upgrade
 
 # install compilation-tools
-RUN apt-get -y install build-essential cmake
+RUN apt-get -y install build-essential
+
+# install cmake
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main'
+RUN apt-get update
+RUN apt-get -y install cmake
 
 # install OpenSSL libraries
 RUN apt-get -y install libssl-dev

@@ -15,7 +15,13 @@ RUN ./llvm.sh 10
 RUN apt-get update
 
 # install compilation-tools
-RUN apt-get -y install build-essential cmake
+RUN apt-get -y install build-essential
+
+# install cmake
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+RUN apt-get update
+RUN apt-get -y install cmake
 
 # set clang as default compiler
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-10 100

@@ -7,8 +7,17 @@ RUN apt-get update
 # install tools
 RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
 
-# install compiler and compilation-tools
-RUN apt-get -y install build-essential cmake clang
+# install compiler
+RUN apt-get -y install clang
+
+# install compilation-tools
+RUN apt-get -y install build-essential
+
+# install cmake
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+RUN apt-get update
+RUN apt-get -y install cmake
 
 # set clang as default compiler
 RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang 100
