@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 
 # install tools
-RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates
+RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates software-properties-common
 
 # install compiler
 RUN apt-get -y install clang
