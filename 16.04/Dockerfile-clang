@@ -7,15 +7,21 @@ RUN apt-get update
 # install tools
 RUN apt-get -y install git wget curl unzip apt-transport-https ca-certificates software-properties-common gnupg-curl
 
+# install gcc9 for dependencies
+RUN add-apt-repository ppa:savoury1/gcc-defaults-9
+RUN apt-get update
+RUN apt-get upgrade
+RUN apt-get -y dist-upgrade
+
+# install compilation-tools
+RUN apt-get -y install build-essential
+
 # install compiler
 RUN add-apt-repository universe
 RUN wget https://apt.llvm.org/llvm.sh
 RUN chmod +x llvm.sh
 RUN ./llvm.sh 10
 RUN apt-get update
-
-# install compilation-tools
-RUN apt-get -y install build-essential
 
 # install cmake
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
