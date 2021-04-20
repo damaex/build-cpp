@@ -25,5 +25,7 @@ RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilte
 # install MariaDB libraries
 RUN apt-get -y install libmariadbclient-dev libmariadb-client-lgpl-dev-compat
 
+RUN apt-get -y install libicu-dev
+
 RUN echo $(cc --version)
 RUN echo $(c++ --version)

@@ -47,6 +47,8 @@ RUN apt-get update
 RUN apt-get -y install libmariadbclient-dev
 RUN apt-get -y install libc++-dev libc++abi-dev
 
+RUN apt-get -y install libicu-dev
+
 RUN echo $(cmake --version)
 RUN echo $(cc --version)
 RUN echo $(c++ --version)

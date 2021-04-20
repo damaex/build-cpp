@@ -43,5 +43,7 @@ RUN apt-get -y install libavcodec-dev libavformat-dev libavdevice-dev libavfilte
 RUN apt-get -y install libmariadbclient-dev
 RUN apt-get -y install libc++-dev libc++abi-dev
 
+RUN apt-get -y install libicu-dev
+
 RUN echo $(cc --version)
 RUN echo $(c++ --version)

@@ -19,3 +19,4 @@
 | libssl-dev           | 1.1.1f | 1.1.1  | 1.1.1j |
 | libmariadbclient-dev | 10.3   | 10.1   | 10.3   |
 | FFMpeg dev libraries | 4.2.4  | 3.4.8  | 2.8.17 |
+| libicu-dev           | 66.1   | 60.2   | 55.1   |
